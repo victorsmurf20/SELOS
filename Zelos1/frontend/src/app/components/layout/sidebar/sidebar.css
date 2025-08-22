@@ -1,0 +1,168 @@
+/* Estilo principal da Sidebar */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 260px;
+  height: 100vh; /* Ocupa toda a altura da tela */
+  position: fixed; /* Fica fixa enquanto a página rola */
+  top: 0;
+  left: 0;
+  background: linear-gradient(180deg, #1f232b, #13151a);
+  border-right: 1px solid #3a3f48;
+  padding: 24px 16px;
+  color: #e0e0e0;
+  z-index: 20; /* Garante que a sidebar fique acima do conteúdo */
+}
+
+/* --- Seção Superior (Logo e Navegação) --- */
+.sidebar-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar-logo {
+  width: 100%;
+  padding: 0 16px;
+  margin-bottom: 40px;
+}
+
+.sidebar-logo img {
+  height: 45px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-logo img:hover {
+  transform: scale(1.05);
+}
+
+.sidebar-nav {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Espaço entre os links */
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #a0a7b1;
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+}
+
+/* Estilo especial para o link da página ATIVA */
+.nav-link.active {
+  background-color: #c62828; /* Vermelho SENAI */
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(200, 40, 40, 0.2);
+}
+
+.nav-link svg {
+  font-size: 1.3rem; /* Para o caso de você usar ícones */
+}
+
+
+/* --- Seção Inferior (Perfil do Usuário) --- */
+.sidebar-bottom {
+  position: relative; /* Essencial para posicionar o dropdown */
+  width: 100%;
+}
+
+.profile-trigger-sidebar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 12px;
+  background-color: transparent;
+  border: 1px solid #3a3f48;
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+  color: #e0e0e0;
+  text-align: left;
+  transition: background-color 0.2s ease;
+}
+
+.profile-trigger-sidebar:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.profile-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-name {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.profile-dropdown-sidebar {
+  position: absolute;
+  bottom: calc(100% + 10px); /* Aparece ACIMA do botão de perfil */
+  left: 0;
+  right: 0; /* Ocupa a mesma largura do botão */
+  background-color: #2d343e;
+  border-radius: 10px;
+  box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.5);
+  border: 1px solid #555;
+  overflow: hidden;
+  z-index: 30; /* Garante que o dropdown fique acima de tudo */
+  
+  /* Animação para surgir de baixo para cima */
+  animation: slideUp 0.2s ease-out;
+}
+
+.dropdown-info {
+  padding: 20px;
+  border-bottom: 1px solid #555;
+  color: #fff;
+}
+
+.dropdown-info h4 { margin: 0 0 5px 0; font-size: 1.1rem; }
+.dropdown-info p { margin: 0; font-size: 0.9rem; color: #b0b0b0; }
+
+.dropdown-logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 20px;
+  width: 100%;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #ff6b6b;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-logout-btn:hover {
+  background-color: rgba(255, 107, 107, 0.1);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

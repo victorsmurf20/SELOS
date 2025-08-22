@@ -1,0 +1,395 @@
+/* ========================================= */
+/*          LAYOUT DA PÁGINA                 */
+/* ========================================= */
+.user-management-layout-container {
+    display: flex;
+}
+
+.main-content-area {
+    margin-left: 260px;
+    width: calc(100% - 260px);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.page-wrapper {
+    position: relative;
+    overflow: hidden;
+    flex-grow: 1;
+    background: linear-gradient(150deg, #000000, #1e2128, #282c34);
+}
+
+@media (max-width: 900px) {
+    .main-content-area {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+/* ========================================= */
+/*       BACKGROUND E ESTILOS GERAIS         */
+/* ========================================= */
+:root {
+    --cor-senai-red: #c62828;
+    --cor-fundo-card: #282c34;
+    --cor-texto-principal: #f0f0f0;
+    --cor-texto-secundario: #a0a0a0;
+    --cor-borda-sutil: #3a3f48;
+    --cor-concluido: #81c784;
+    --cor-roxo-edit: #ba68c8;
+    --cor-vermelho-delete: #ef4444;
+    --cor-amarelo-aviso: #facc15;
+    /* Amarelo para alertas */
+}
+
+.content-wrapper {
+    position: relative;
+    z-index: 1;
+}
+
+.background {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.shapes-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.shape {
+    position: absolute;
+    will-change: transform;
+}
+
+.shape1 {
+    border-radius: 30%;
+    border: 2px solid var(--cor-vermelho-delete);
+    opacity: 0.5;
+    box-shadow: 0 0 15px 2px rgba(239, 68, 68, 0.3);
+}
+
+.shape2 {
+    border-radius: 50%;
+    background-color: #f87171;
+    opacity: 0.2;
+    filter: blur(2px);
+}
+
+.shape3 {
+    background-color: #d32f2f;
+    opacity: 0.3;
+    transform: rotate(45deg);
+}
+
+/* ========================================= */
+/*      ESTILOS ESPECÍFICOS DA PÁGINA        */
+/* ========================================= */
+.user-management-container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.admin-header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--cor-texto-principal);
+    margin: 0;
+}
+
+.btn-open-create-popup {
+    background-color: var(--cor-concluido);
+    color: #1e2228;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-open-create-popup:hover {
+    background-color: #6aa86c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(129, 199, 132, 0.2);
+}
+
+
+/* --- ESTILOS DA BARRA DE PESQUISA --- */
+.search-bar-container {
+    margin-bottom: 2rem;
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background-color: #1e2128;
+    border: 1px solid var(--cor-borda-sutil);
+    border-radius: 6px;
+    color: var(--cor-texto-principal);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-input:focus {
+    border-color: var(--cor-roxo-edit);
+    box-shadow: 0 0 0 3px rgba(186, 104, 200, 0.2);
+}
+
+
+/* --- ESTILOS DA LISTA DE USUÁRIOS --- */
+.lista-usuarios-container {
+    background-color: var(--cor-fundo-card);
+    border-radius: 8px;
+    border: 1px solid var(--cor-borda-sutil);
+    overflow: hidden;
+}
+
+.lista-usuarios-header,
+.usuario-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--cor-borda-sutil);
+}
+
+.usuario-item:last-child {
+    border-bottom: none;
+}
+
+.lista-usuarios-header {
+    font-weight: 600;
+    color: var(--cor-texto-secundario);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.col-nome {
+    flex: 2;
+    min-width: 150px;
+}
+
+.col-ra {
+    flex: 1;
+    min-width: 100px;
+}
+
+.col-cargo {
+    flex: 1;
+    min-width: 100px;
+}
+
+.col-acoes-user {
+    flex-basis: 150px;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+}
+
+/* Mensagem de "Nenhum resultado" */
+.no-results-message {
+    padding: 2rem;
+    text-align: center;
+    color: var(--cor-texto-secundario);
+}
+
+
+.btn-action {
+    background: none;
+    border: 1px solid var(--cor-borda-sutil);
+    color: var(--cor-texto-secundario);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-action.edit:hover {
+    border-color: var(--cor-roxo-edit);
+    color: var(--cor-roxo-edit);
+}
+
+.btn-action.delete:hover {
+    border-color: var(--cor-vermelho-delete);
+    color: var(--cor-vermelho-delete);
+}
+
+.btn-action:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+/* ========================================= */
+/*            ESTILOS DOS POP-UPS            */
+/* ========================================= */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background-color: var(--cor-fundo-card);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid var(--cor-borda-sutil);
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.popup-content h2 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    color: var(--cor-texto-principal);
+}
+
+.popup-content p {
+    color: var(--cor-texto-secundario);
+    line-height: 1.6;
+}
+
+.popup-content p strong {
+    color: var(--cor-texto-principal);
+    font-weight: 600;
+}
+
+.popup-content .form-group {
+    margin-bottom: 1rem;
+}
+
+.popup-content label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--cor-texto-secundario);
+    font-size: 0.9rem;
+}
+
+.popup-content input,
+.popup-content select {
+    width: 100%;
+    background-color: #3a3f48;
+    border: 1px solid var(--cor-borda-sutil);
+    border-radius: 6px;
+    padding: 0.8rem;
+    color: var(--cor-texto-principal);
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.popup-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+/* --- ESTILOS DO POP-UP DE ALERTA --- */
+.alert-popup {
+    text-align: center;
+}
+
+.alert-popup-icon {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 1rem;
+    color: var(--cor-amarelo-aviso);
+}
+
+.alert-popup h2 {
+    color: var(--cor-amarelo-aviso);
+}
+
+.popup-actions .btn-alert-ok {
+    background-color: var(--cor-amarelo-aviso);
+    color: #1e2228;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+.popup-actions .btn-alert-ok:hover {
+    background-color: #fde047;
+}
+
+
+/* Estilos dos botões dos outros pop-ups */
+.btn-add-user {
+    background-color: var(--cor-concluido);
+    color: #1e2228;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-add-user:hover {
+    background-color: #6aa86c;
+}
+
+.btn-save {
+    background-color: var(--cor-roxo-edit);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-save:hover {
+    background-color: #a351b6;
+}
+
+.btn-delete-confirm {
+    background-color: var(--cor-vermelho-delete);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-delete-confirm:hover {
+    background-color: #c42d2d;
+}

@@ -1,0 +1,100 @@
+/* ================================================== */
+/*          ARQUIVO CSS UNIFICADO DO FOOTER           */
+/* ================================================== */
+
+.site-footer {
+  background: linear-gradient(150deg, #000000, #1e2128, #282c34);
+  color: #a0a0a0; /* Cor secundária padrão */
+  padding: 20px 0 10px;
+  font-family: 'Montserrat', sans-serif;
+  border-top: 1px solid #3a3f48; /* Borda sutil padrão */
+  position: relative;
+  z-index: 10;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  gap: 15px; 
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-section h3 {
+  font-size: 1rem; 
+  color: #f0f0f0; /* Cor de texto principal padrão */
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  position: relative;
+  font-weight: 600;
+}
+
+.footer-section h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 30px;
+  height: 2px;
+  background-color: #c62828; /* Vermelho SENAI fixo */
+}
+
+/* ===== SEÇÃO "SOBRE" E LOGO ===== */
+.footer-logo {
+  font-size: 1.2rem; 
+  color: #c62828; /* Vermelho SENAI fixo */
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.footer-section.about p {
+  line-height: 1.5;
+  margin-bottom: 10px;
+  font-size: 0.85rem;
+}
+
+/* ===== SEÇÃO DE CONTATO ===== */
+.contact-info span {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 0.85rem;
+}
+
+.contact-info i {
+  margin-right: 10px;
+  color: #c62828; /* Vermelho SENAI fixo */
+}
+
+/* ===== RODAPÉ INFERIOR (COPYRIGHT) ===== */
+.footer-bottom {
+  text-align: center;
+  padding-top: 15px;
+  margin-top: 15px;
+  border-top: 1px solid #3a3f48; /* Borda sutil padrão */
+  font-size: 0.8rem;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 768px) {
+  .site-footer {
+    padding: 20px 0 15px;
+  }
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-section h3::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
